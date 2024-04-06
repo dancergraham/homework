@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Number Generator</title>
+    <title>Random Homework Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,6 +67,7 @@
 
                     if (userInput === correctAnswer) {
                                 alert("Correct! Well done!");
+                                document.getElementById("userInput").value =  "";
                             } else {
                                 alert("Oops! Try again.");
                             }
