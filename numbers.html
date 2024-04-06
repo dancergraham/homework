@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px auto;
+        }
+        #randomNumber {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            font-size: 18px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rozenn's maths homework</h1>
+    <div id="randomNumber"></div>
+    <input type="number" id="userInput" placeholder="Enter the answer" onkeyup="handleKeyPress(event)">
+    <button onclick="checkAnswer()">Check</button>
+    <button onclick="generateNewNumber()">Generate New Number</button>
+    
+    <script>
+        let randomNumber = getRandomNumber();
+        let offset = -18;
+
+        function getRandomNumber() {
+            const min = 1000;
+            const max = 2000;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function showRandomNumber() {
+            document.getElementById("randomNumber").textContent = `Subtract ${offset} from: ${randomNumber}`;
+        }
+
+        function generateNewNumber() {
+            randomNumber = getRandomNumber();
+            showRandomNumber();
+        }
+        
+        function handleKeyPress(event) {
+                    if (event.key === "Enter") {
+                                checkAnswer();
+                            }
+                }
+
+        function checkAnswer() {
+            const userInput = parseInt(document.getElementById("userInput").value);
+            const correctAnswer = randomNumber + offset;
+
+                    if (userInput === correctAnswer) {
+                                alert("Correct! Well done!");
+                            } else {
+                                alert("Oops! Try again.");
+                            }
+                }
+
+        showRandomNumber();
+    </script>
+</body>
+</html>
