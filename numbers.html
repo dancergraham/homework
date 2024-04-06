@@ -38,7 +38,16 @@
         }
 
         function showRandomNumber() {
-            document.getElementById("randomNumber").textContent = `Subtract ${offset} from: ${randomNumber}`;
+            absoluteOffset = Math.abs(offset);
+            if (offset < 0)
+                    {operator = "Subtract";
+                                preposition = "from"
+                    }
+        else {
+                    operator = "Add";
+                    preposition = "to"
+                }
+        document.getElementById("randomNumber").textContent = `${operator} ${absoluteOffset} ${preposition}: ${randomNumber}`;
         }
 
         function generateNewNumber() {
