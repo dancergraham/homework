@@ -26,6 +26,7 @@
     <input type="number" id="userInput" placeholder="Enter the answer" onkeyup="handleKeyPress(event)">
     <button onclick="checkAnswer()">Check</button>
     <button onclick="generateNewNumber()">Generate New Number</button>
+    <div id="pastResults"><br></br></div>
     
     <script>
         let randomNumber = getRandomNumber();
@@ -47,7 +48,7 @@
                     operator = "Add";
                     preposition = "to"
                 }
-        document.getElementById("randomNumber").textContent = `${operator} ${absoluteOffset} ${preposition}: ${randomNumber}`;
+        document.getElementById("randomNumber").textContent = `${operator} ${absoluteOffset} ${preposition} ${randomNumber}`;
         }
 
         function generateNewNumber() {
@@ -67,13 +68,24 @@
 
                     if (userInput === correctAnswer) {
                                 alert("Correct! Well done!");
+                                        addHistory(correctAnswer);
                                 document.getElementById("userInput").value =  "";
                             } else {
                                 alert("Oops! Try again.");
                             }
                 }
 
+        function addHistory(item) {
+            console.log(item);
+            let current_history = document.getElementById("pastResults").innerHTML;
+            console.log(current_history);
+            let newHistory = document.getElementById("randomNumber").textContent +": " + item + "<br>" + current_history;
+            document.getElementById("pastResults").innerHTML = newHistory;
+
+                }
+
         showRandomNumber();
+
     </script>
 </body>
 </html>
